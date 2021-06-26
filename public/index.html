@@ -38,15 +38,24 @@
                 <div class="card">
                     <div class="card-content"  v-on:click="edit_ui_show(idx)">
                       <div class="content" style="word-wrap: break-word">
+                        <span class="tag is-light">
+                            {{moment().unix(i.create_at).format('YYYY/MM/DD HH:mm:ss')}}
+                        </span>
                         {{i.text}}
-                      </div>
                     </div>
+                    </div>
+
                     <div class="modal" v-bind:class="{'is-active':i.edit_ui}">
                         <div class="modal-background"
                         v-on:click="edit_ui_close(idx)"></div>
                         <div class="modal-content">
                             <div class="notification is-danger">
-                                <textarea class="textarea" placeholder="e.g. Hello world" v-model="i.text"></textarea>                              </div>
+                                <textarea 
+                                    class="textarea" 
+                                    placeholder="todo edit" 
+                                    v-model="i.text"
+                                ></textarea>
+                            </div>
                             </div>
                         <button 
                             class="modal-close is-large" 
